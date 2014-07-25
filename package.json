@@ -1,0 +1,28 @@
+{
+  "name": "smtp-test-server",
+  "version": "0.1.1",
+  "description": "Test server for SMTP clients. Does not store messages, returns md5 hash instead.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "bin": {
+    "smtp-test-server": "./bin/smtp-test-server"
+  },
+  "keywords": [
+    "SMTP",
+    "testing"
+  ],
+  "author": "Andris Reinman",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.3.0",
+    "simplesmtp": "^0.3.32"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-mocha-test": "~0.10.0"
+  }
+}

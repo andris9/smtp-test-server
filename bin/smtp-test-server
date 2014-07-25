@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var packageData = require('../package.json');
+
+program.
+version(packageData.version).
+option('-u, --user [username]', 'User to run as').
+option('-g, --group [groupname]', 'Group to run as').
+option('-p, --port [nr]', 'Port to listen, defaults to 25').
+parse(process.argv);
+
+var server = require('../src/server')();
+
+server.listen(program.port || 25, function() {
+    if (program.group) {
+        try {
+            process.setgid(program.group);
+        } catch (E) {
+            console.error('Setting group failed');
+            console.error(E);
+        }
+    }
+
+    if (program.user) {
+        try {
+            process.setuid(program.user);
+        } catch (E) {
+            console.error('Setting user failed');
+            console.error(E);
+        }
+    }
+
+    console.log('Server listening on port %s', program.port || 25);
+});

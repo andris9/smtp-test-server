@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec 2>&1
+exec smtp-test-server -u smtptest > /var/log/smtp-test-server.log
+
